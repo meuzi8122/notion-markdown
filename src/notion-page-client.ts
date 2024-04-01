@@ -28,7 +28,7 @@ export class NotionPageClient {
                 database_id: process.env.NOTION_DATABASE_ID as string
             },
             properties: {
-                /* DBのnameカラム */
+                /* DBのNameカラム */
                 Name: {
                     title: [
                         {
@@ -38,6 +38,7 @@ export class NotionPageClient {
                         }
                     ]
                 },
+                /* DBのCategoryカラム */
                 Category: {
                     select: {
                         name: category
