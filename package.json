@@ -4,21 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build:live",
     "build": "tsc -p .",
-    "build:live": "nodemon --watch 'src/**/*.ts' --exec \"ts-node\" src/index.ts"
+    "start": "npm run build && node lib/index.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.11.30",
-    "nodemon": "^3.1.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.3"
   },
   "dependencies": {
     "@notionhq/client": "^2.2.14",
     "@tryfabric/martian": "^1.2.4",
+    "dotenv": "^16.4.5",
     "gray-matter": "^4.0.3"
   }
 }

@@ -1,8 +1,9 @@
+import * as fs from "fs";
+import { NotionPageClient } from "./notion-page-client";
 
-// import { Client } from "@notionhq/client";
+const DIR_PATH = "./markdown";
 
-// const notion = new Client({
-//     auth: process.env.NOTION_API_KEY
-// });
+for (let fileName of fs.readdirSync(DIR_PATH)) {
+    NotionPageClient.createNotionPage(`${DIR_PATH}/${fileName}`);
+}
 
-console.log("hello")
