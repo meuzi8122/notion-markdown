@@ -1,5 +1,6 @@
 
 import { Client } from "@notionhq/client";
+import type { BlockObjectRequest } from "@notionhq/client/build/src/api-endpoints";
 import { markdownToBlocks } from "@tryfabric/martian";
 import * as dotenv from "dotenv";
 import * as fs from "fs";
@@ -18,6 +19,7 @@ export class NotionPageClient {
         console.log(response);
     }
 
+
     private static createNotionPageBodyParameters(filePath: string) {
         return {
             parent: {
@@ -34,7 +36,7 @@ export class NotionPageClient {
                     ]
                 },
             },
-            //children: this.createChildrenBlocks(filePath)
+            children: this.createChildrenBlocks(filePath) as BlockObjectRequest[]
         }
     }
 
