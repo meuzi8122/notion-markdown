@@ -15,33 +15,37 @@ const notion = new Client({
 
 export class NotionPageClient {
     static async createNotionPage(filePath: string) {
-        const response = await notion.pages.create(this.createNotionPageBodyParameters(filePath));
-        console.log(response);
+        await notion.pages.create(this.createNotionPageBodyParameters(filePath));
     }
 
-
     private static createNotionPageBodyParameters(filePath: string) {
+        const filePathElements = filePath.split("/");
+        const category = filePathElements[2];
+        const fileName = filePathElements[3].replace(".md", "");
+
         return {
             parent: {
                 database_id: process.env.NOTION_DATABASE_ID as string
             },
             properties: {
+                /* DBのnameカラム */
                 Name: {
                     title: [
                         {
                             text: {
-                                content: this.createPageTitle(filePath)
+                                content: fileName
                             }
                         }
                     ]
                 },
+                Category: {
+                    select: {
+                        name: category
+                    }
+                }
             },
             children: this.createChildrenBlocks(filePath) as BlockObjectRequest[]
         }
-    }
-
-    private static createPageTitle(filePath: string): string {
-        return filePath.split("/").slice(-1)[0].replace(".md", "");
     }
 
     private static createChildrenBlocks(filePath: string) {
