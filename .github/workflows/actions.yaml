@@ -3,7 +3,7 @@ name: Notion Markdown Action
 on: 
   push:
     paths:
-      - "markdown/**/*.md"
+      - "memos/**/*.md"
 
 jobs:
   add-notion-page:
