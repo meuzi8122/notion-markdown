@@ -2,7 +2,7 @@ import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { notion } from "./notion";
 
 
-export type NotionDatabaseChildPage = {
+type NotionDatabaseChildPage = {
     pageId: string;
     title: string;
     category: string;
