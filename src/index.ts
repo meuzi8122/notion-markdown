@@ -18,10 +18,9 @@ async function handler() {
             }
 
             await NotionPageClient.createNotionPage(filePath);
-
         }
     }
 
 }
 
-handler()
+handler();
