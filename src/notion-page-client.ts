@@ -1,21 +1,21 @@
 
-import { Client } from "@notionhq/client";
+
 import type { BlockObjectRequest } from "@notionhq/client/build/src/api-endpoints";
 import { markdownToBlocks } from "@tryfabric/martian";
-import * as dotenv from "dotenv";
 import * as fs from "fs";
 import matter from "gray-matter";
+import { notion } from "./notion";
 
-dotenv.config();
-
-
-const notion = new Client({
-    auth: process.env.NOTION_API_KEY
-});
 
 export class NotionPageClient {
     static async createNotionPage(filePath: string) {
         await notion.pages.create(this.createNotionPageBodyParameters(filePath));
+    }
+
+    static async deleteNotionPage(pageId: string) {
+        await notion.blocks.delete({
+            block_id: pageId
+        });
     }
 
     private static createNotionPageBodyParameters(filePath: string) {
