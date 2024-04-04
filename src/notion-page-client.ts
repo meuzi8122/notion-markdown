@@ -13,9 +13,7 @@ export class NotionPageClient {
     }
 
     static async deleteNotionPage(pageId: string) {
-        await notion.blocks.delete({
-            block_id: pageId
-        });
+        await notion.blocks.delete({ block_id: pageId });
     }
 
     private static createNotionPageBodyParameters(filePath: string) {
